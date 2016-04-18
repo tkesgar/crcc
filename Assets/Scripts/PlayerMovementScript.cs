@@ -119,6 +119,53 @@ public class PlayerMovementScript : MonoBehaviour {
         score = Mathf.Max(score, (int)current.z);
         gameStateController.score = score;
     }
+	
+	private void HandleMouseClick()
+	{
+		RaycastHit hit;
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		
+		if (Physics.Raycast(ray, out hit))
+		{
+			var direction = hit.point - transform.position;
+			var x = direction.x;
+			var z = direction.z;
+			
+			// North = abs(z) > abs(x), z > 0
+			// South = abs(z) > abs(x), z < 0
+			// East  = abs(z) < abs(x), x > 0
+			// West  = abs(z) < abs(x), x < 0
+			
+			if (Mathf.Abs(z) > Mathf.Abs(x))
+			{
+				if (z > 0)
+				{
+					Move(new Vector3(0, 0, 1));
+				}
+				else // (z < 0)
+				{
+					Move(new Vector3(0, 0, -1));
+				}
+			}
+			else // (Mathf.Abs(z) < Mathf.Abs(x))
+			{
+				if (x > 0)
+				{
+					if (Mathf.RoundToInt(current.x) < maxX)
+					{
+						Move(new Vector3(1, 0, 0));
+					}
+				}
+				else // (x < 0)
+				{
+					if (Mathf.RoundToInt(current.x) > minX)
+					{
+						Move(new Vector3(-1, 0, 0));
+					}
+				}
+			}
+        }
+	}
 
     private void HandleInput()
     {
@@ -127,7 +174,14 @@ public class PlayerMovementScript : MonoBehaviour {
         // South = S = Z-
         // East  = A = X-
         // West  = D = X+
-
+		
+		// Handle mouse click
+		if (Input.GetMouseButtonDown(0))
+		{
+			HandleMouseClick();
+			return;
+		}
+		
         if (Input.GetKeyDown(KeyCode.W))
         {
             Move(new Vector3(0, 0, 1));
