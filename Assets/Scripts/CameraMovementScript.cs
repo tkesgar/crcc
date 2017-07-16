@@ -35,13 +35,12 @@ public class CameraMovementScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerMovement = player.GetComponent<PlayerMovementScript>();
 
-        // TODO this position and rotation is baked, extract it
-        initialOffset = new Vector3(2.5f, 10.0f, -7.5f);
+        initialOffset = transform.position;
         offset = initialOffset;
 	}
 	
-	public void Update() {
-
+	public void Update()
+    {
         if (moving)
         {
             Vector3 playerPosition = player.transform.position;
@@ -63,9 +62,8 @@ public class CameraMovementScript : MonoBehaviour
 
     public void Reset()
     {
-        // TODO This kind of reset is dirty, refactor might be needed.
         moving = false;
         offset = initialOffset;
-        transform.position = new Vector3(2.5f, 10.0f, -7.5f);
+        transform.position = initialOffset;
     }
 }

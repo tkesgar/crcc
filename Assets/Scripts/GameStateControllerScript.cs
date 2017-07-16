@@ -34,6 +34,8 @@ public class GameStateControllerScript : MonoBehaviour {
     /// </summary>
     public int score;
 
+    public Text isHighScoreText;
+
     private GameObject currentCanvas;
     private string state;
 
@@ -63,7 +65,7 @@ public class GameStateControllerScript : MonoBehaviour {
         }
         else if (state == "gameover")
         {
-            if (Input.anyKeyDown)
+            if (Input.GetButtonDown("Submit"))
             {
                 MainMenu();
             }
@@ -96,6 +98,9 @@ public class GameStateControllerScript : MonoBehaviour {
         state = "gameover";
 
         gameOverScore.text = score.ToString();
+
+        FindObjectOfType<HighScoreManager>().SetHighScore(score);
+        isHighScoreText.gameObject.SetActive(score > FindObjectOfType<HighScoreManager>().highScore);
 
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraMovementScript>().moving = false;
     }

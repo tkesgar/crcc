@@ -1,8 +1,8 @@
 # Crossy Road Clone Challenge
 
-Crossy Road Clone Challenge adalah sebuah game Unity sederhana yang merupakan tiruan dari [Crossy Road](http://www.crossyroad.com/). Kode sumber game ini dibangun tanpa menggunakan *asset* atau kamus apapun -- *simply pure Unity 5*.
+Crossy Road Clone Challenge adalah sebuah game Unity sederhana yang merupakan tiruan dari [Crossy Road](http://www.crossyroad.com/).
 
-Game ini dapat dimainkan langsung (*web build*) di http://tkesgar.web.id/crcc/.
+Ketika pertama dibuat, kode sumber game ini dibangun tanpa menggunakan *assets* atau kamus apapun -- *simply pure Unity 5*. Versi sekarang yang menggunakan Unity 2017 menggunakan *post-processing asset* dari Unity supaya terlihat (sedikit) cantik.
 
 ## Tangkapan Layar
 
