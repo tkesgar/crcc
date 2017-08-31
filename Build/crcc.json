@@ -1,0 +1,9 @@
+{
+"TOTAL_MEMORY": 268435456,
+"dataUrl": "crcc.data.unityweb",
+"asmCodeUrl": "crcc.asm.code.unityweb",
+"asmMemoryUrl": "crcc.asm.memory.unityweb",
+"asmFrameworkUrl": "crcc.asm.framework.unityweb",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20"
+}
